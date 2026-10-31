@@ -1,0 +1,834 @@
+/* LUXURY 3D ENVELOPE & LOVE LETTER STYLES */
+
+.love-letter-page {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 80px 16px 50px;
+  background:
+    radial-gradient(ellipse at 50% 15%, #ffe6ef 0%, transparent 60%),
+    radial-gradient(circle at 10% 85%, #fedbe8 0%, transparent 45%),
+    radial-gradient(circle at 90% 75%, #ffe9dc 0%, transparent 45%),
+    linear-gradient(175deg, #fff8fa 0%, #fff0f5 50%, #fef5ef 100%);
+  color: #5c2c3e;
+  overflow-x: hidden;
+  font-family: var(--font-dm-sans, "DM Sans", sans-serif);
+}
+
+.letter-header-nav {
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  max-width: 720px;
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.letter-nav-pill {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(225, 150, 175, 0.4);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  color: #a03c62;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(160, 60, 98, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.letter-nav-pill:hover {
+  background: white;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(160, 60, 98, 0.16);
+}
+
+.letter-title-badge {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(255, 245, 248, 0.92);
+  border: 1px solid rgba(235, 160, 185, 0.4);
+  box-shadow: 0 4px 16px rgba(217, 77, 131, 0.09);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #ad3d67;
+  text-transform: uppercase;
+}
+
+/* ========================================================
+   THE REAL 3D LUXURY ENVELOPE
+======================================================== */
+
+.envelope-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 460px;
+  margin: 32px auto 0;
+  perspective: 1200px;
+  z-index: 10;
+}
+
+.envelope-halo {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 150, 185, 0.45) 0%, rgba(255, 190, 215, 0.15) 50%, transparent 70%);
+  filter: blur(24px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* The Envelope Card Rig */
+.real-envelope {
+  position: relative;
+  width: min(94vw, 420px);
+  height: 270px;
+  border-radius: 14px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  box-shadow:
+    0 24px 55px -8px rgba(150, 35, 75, 0.28),
+    0 10px 24px -5px rgba(150, 35, 75, 0.15),
+    0 0 0 1px rgba(225, 185, 175, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.real-envelope:hover:not(.is-opening) {
+  box-shadow:
+    0 30px 65px -8px rgba(150, 35, 75, 0.35),
+    0 14px 28px -5px rgba(150, 35, 75, 0.2),
+    0 0 0 1px rgba(225, 185, 175, 0.7);
+}
+
+/* 1. Envelope Back Interior Shell */
+.env-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 50% 30%, #faeee4 0%, #f3d7c2 100%);
+  border: 1px solid #ebd0bc;
+  z-index: 1;
+}
+
+/* 2. Folded Letter Sheet Inside */
+.env-letter-sheet {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86%;
+  height: 160px;
+  background: #fffefc;
+  border-radius: 8px;
+  box-shadow:
+    0 4px 14px rgba(100, 40, 60, 0.12),
+    inset 0 0 0 1px #fae7db;
+  z-index: 2;
+  overflow: hidden;
+  padding: 14px 18px;
+  pointer-events: none;
+}
+
+.sheet-border {
+  width: 100%;
+  height: 100%;
+  border: 1px dashed rgba(220, 160, 180, 0.6);
+  border-radius: 6px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sheet-watermark {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  opacity: 0.35;
+}
+
+.sheet-title {
+  margin: 0 0 8px;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #a82452;
+  font-style: italic;
+}
+
+.sheet-line {
+  height: 3px;
+  background: #f7d8e2;
+  border-radius: 2px;
+  width: 90%;
+  margin-bottom: 6px;
+}
+
+.sheet-line.short {
+  width: 60%;
+}
+
+/* 3. Left Triangular Flap */
+.env-flap-left {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 50% 50%, 0 100%);
+  background: linear-gradient(135deg, #fcf2e8 0%, #f4dcce 100%);
+  filter: drop-shadow(4px 0 5px rgba(130, 40, 60, 0.14));
+  border-radius: 14px 0 0 14px;
+  z-index: 3;
+}
+
+/* 4. Right Triangular Flap */
+.env-flap-right {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+  background: linear-gradient(225deg, #fcf2e8 0%, #f4dcce 100%);
+  filter: drop-shadow(-4px 0 5px rgba(130, 40, 60, 0.14));
+  border-radius: 0 14px 14px 0;
+  z-index: 4;
+}
+
+/* 5. Bottom Triangular Flap (The Front Pocket) */
+.env-flap-bottom {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 100%, 50% 46%, 100% 100%);
+  background: linear-gradient(0deg, #f8e8dc 0%, #f4d8c4 100%);
+  filter: drop-shadow(0 -4px 6px rgba(120, 35, 55, 0.18));
+  border-radius: 0 0 14px 14px;
+  z-index: 5;
+}
+
+/* 6. Postage Stamp on Envelope */
+.env-postage-stamp {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.stamp-inner {
+  width: 44px;
+  height: 52px;
+  background: #fffcf8;
+  border: 2px dashed #f2a8c0;
+  box-shadow: 0 2px 6px rgba(120, 30, 50, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  transform: rotate(2deg);
+}
+
+.stamp-value {
+  font-size: 8px;
+  font-weight: 800;
+  color: #be123c;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.stamp-text {
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #e11d48;
+}
+
+.stamp-postmark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0.55;
+  transform: rotate(-10deg);
+}
+
+.stamp-postmark span {
+  font-family: monospace;
+  font-size: 7px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #9f3e58;
+}
+
+.postmark-waves {
+  width: 32px;
+  height: 6px;
+  border-top: 1px solid #9f3e58;
+  border-bottom: 1px solid #9f3e58;
+  margin-top: 2px;
+}
+
+/* 7. Calligraphy Address on Front */
+.env-calligraphy-address {
+  position: absolute;
+  bottom: 22px;
+  left: 20px;
+  right: 20px;
+  z-index: 7;
+  text-align: center;
+  pointer-events: none;
+}
+
+.addr-tag {
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: #c06984;
+  text-transform: uppercase;
+}
+
+.addr-name {
+  margin: 3px 0 0;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+  color: #632439;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.addr-from {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: #92586b;
+  font-family: Georgia, serif;
+}
+
+/* 8. Top Triangular Flap */
+.env-flap-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 155px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: linear-gradient(180deg, #fff7f1 0%, #f8dfcb 90%, #f2d4be 100%);
+  filter: drop-shadow(0 7px 9px rgba(110, 30, 50, 0.24));
+  border-radius: 14px 14px 0 0;
+  transform-origin: top center;
+  z-index: 10;
+}
+
+/* 9. Crimson Heart Wax Seal */
+.real-wax-seal {
+  position: absolute;
+  top: 145px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  width: 58px;
+  height: 58px;
+  border-radius: 52% 48% 51% 49% / 49% 51% 52% 48%;
+  background: radial-gradient(circle at 35% 30%, #f43f5e 0%, #be123c 45%, #881337 80%, #4c0519 100%);
+  box-shadow:
+    0 8px 24px rgba(136, 19, 55, 0.55),
+    0 2px 6px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.55),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.wax-rim {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 200, 220, 0.45);
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 8px rgba(70, 5, 25, 0.5);
+}
+
+.wax-emboss {
+  color: #ffe4ec;
+  filter: drop-shadow(0 1.5px 2px rgba(60, 0, 20, 0.7));
+}
+
+.seal-sparkle {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  font-size: 13px;
+  color: #fef08a;
+  animation: pulseSparkle 2s ease-in-out infinite;
+}
+
+@keyframes pulseSparkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2) rotate(15deg); }
+}
+
+/* Open Button */
+.open-letter-btn {
+  margin-top: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(110deg, #f43f7a, #e11d48 60%, #be123c 100%);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 26px rgba(225, 29, 72, 0.42);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.open-letter-btn:hover:not(:disabled) {
+  box-shadow: 0 12px 34px rgba(225, 29, 72, 0.6);
+}
+
+.open-letter-btn:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.envelope-hint {
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: #9f5b72;
+  font-style: italic;
+  font-family: Georgia, serif;
+}
+
+/* ========================================================
+   FLIPBOOK & PARCHMENT JOURNAL
+======================================================== */
+
+.flipbook-wrapper {
+  width: 100%;
+  max-width: 620px;
+  margin: 10px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flipbook-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.progress-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(220, 150, 175, 0.35);
+  background: rgba(255, 255, 255, 0.7);
+  color: #92586b;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.progress-dot.active {
+  background: #f43f7a;
+  border-color: #f43f7a;
+  color: white;
+  box-shadow: 0 4px 14px rgba(244, 63, 122, 0.35);
+}
+
+.progress-dot.final-tab.active {
+  background: linear-gradient(110deg, #e11d48, #be123c);
+}
+
+.dot-num {
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  display: grid;
+  place-items: center;
+}
+
+.progress-dot.active .dot-num {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+/* PARCHMENT BOOK */
+
+.parchment-book {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  background: #fffdf9;
+  border-radius: 16px;
+  box-shadow:
+    0 22px 60px rgba(120, 40, 65, 0.14),
+    0 4px 15px rgba(120, 40, 65, 0.06);
+  border: 1px solid rgba(230, 205, 190, 0.6);
+  overflow: hidden;
+}
+
+.book-page {
+  position: relative;
+  padding: 36px 28px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-watermark {
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  font-size: 120px;
+  color: rgba(244, 63, 122, 0.035);
+  pointer-events: none;
+  font-family: Georgia, serif;
+}
+
+.page-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.chapter-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #d14d7a;
+  text-transform: uppercase;
+}
+
+.page-count {
+  font-size: 11px;
+  color: #ad7d8e;
+  font-style: italic;
+  font-family: Georgia, serif;
+}
+
+.page-heading {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: clamp(26px, 6vw, 34px);
+  color: #632d43;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.page-subtitle {
+  margin: 6px 0 20px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 14px;
+  color: #9c687b;
+}
+
+/* POLAROID ON PAGE */
+
+.page-polaroid-wrap {
+  position: relative;
+  margin: 10px auto 24px;
+  width: min(85vw, 290px);
+}
+
+.tape-strip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 90px;
+  height: 22px;
+  background: rgba(255, 230, 200, 0.7);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+  z-index: 10;
+}
+
+.page-polaroid {
+  background: white;
+  padding: 10px 10px 14px;
+  border-radius: 3px;
+  box-shadow: 0 8px 24px rgba(120, 50, 70, 0.15);
+  transform: rotate(-1.5deg);
+}
+
+.polaroid-photo {
+  width: 100%;
+  aspect-ratio: 4 / 4.8;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+  background: #fae8ee;
+}
+
+.polaroid-caption {
+  margin: 10px 0 0;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: #794c5f;
+  text-align: center;
+}
+
+/* PROSE */
+
+.page-prose {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: #552739;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.page-prose p {
+  margin: 0;
+  text-indent: 1em;
+}
+
+.page-prose p:first-child {
+  text-indent: 0;
+}
+
+/* PAGE FOOTER NAV */
+
+.page-footer-nav {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(220, 180, 195, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.page-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.page-nav-btn.prev {
+  background: #fbf2f5;
+  color: #8c5267;
+}
+
+.page-nav-btn.prev:hover:not(:disabled) {
+  background: #f5e2ea;
+}
+
+.page-nav-btn.prev:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.page-nav-btn.next {
+  background: linear-gradient(110deg, #f43f7a, #e11d48);
+  color: white;
+  box-shadow: 0 4px 15px rgba(244, 63, 122, 0.3);
+}
+
+.page-nav-btn.next:hover {
+  transform: translateX(2px);
+  box-shadow: 0 6px 20px rgba(244, 63, 122, 0.45);
+}
+
+/* FINAL BIRTHDAY LETTER PAGE */
+
+.final-letter-page {
+  padding: 42px 28px 36px;
+  text-align: center;
+}
+
+.letter-wax-stamp {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e62b5d, #a31139 70%, #690620 100%);
+  color: #ffdde6;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 16px;
+  box-shadow: 0 6px 18px rgba(163, 17, 57, 0.35);
+}
+
+.final-letter-title {
+  font-family: Georgia, serif;
+  font-size: clamp(28px, 6.5vw, 38px);
+  color: #5c1e34;
+  font-weight: 600;
+  margin: 10px 0 22px;
+  font-style: italic;
+}
+
+.final-letter-prose {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.95;
+  color: #542738;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 520px;
+  margin: 0 auto 28px;
+  text-align: left;
+}
+
+.final-letter-prose p {
+  margin: 0;
+}
+
+/* HIGHLIGHTED FINAL QUOTE */
+
+.highlighted-final-quote {
+  margin: 24px 0 16px;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+  border: 1px solid rgba(244, 63, 122, 0.35);
+  box-shadow: 0 8px 24px rgba(244, 63, 122, 0.12);
+  font-family: Georgia, serif;
+  font-size: clamp(17px, 4.5vw, 21px);
+  font-weight: 600;
+  font-style: italic;
+  text-align: center;
+  color: #a81c49;
+  line-height: 1.6;
+}
+
+.letter-signature {
+  margin-top: 14px;
+  text-align: right;
+  font-family: Georgia, serif;
+}
+
+.sig-close {
+  margin: 0;
+  font-style: italic;
+  color: #8c5367;
+  font-size: 14px;
+}
+
+.sig-name {
+  margin: 4px 0 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #b91c49;
+}
+
+/* FINAL ACTION FOOTER */
+
+.final-action-footer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  sm-flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px dashed rgba(220, 180, 195, 0.6);
+}
+
+.final-action-footer .secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(220, 150, 175, 0.5);
+  background: white;
+  color: #9c3c62;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.final-action-footer .secondary-btn:hover {
+  background: #fff3f7;
+  transform: translateY(-1px);
+}
+
+.final-action-footer .primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(110deg, #f43f7a, #e11d48);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(244, 63, 122, 0.35);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.final-action-footer .primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(244, 63, 122, 0.5);
+}
+
+@media (min-width: 600px) {
+  .book-page {
+    padding: 44px 40px 34px;
+  }
+
+  .final-action-footer {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(circle at 50% 40%, #f7a8b8 0%, #ea899e 60%, #cf6982 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "DM Sans", sans-serif;
+  color: #fff;
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 420px;
+  height: 520px;
+  transform: scale(min(1, 85vw / 300px));
+}
+
+#cake {
+  display: block;
+  position: relative;
+  margin: -9em auto 0 auto;
+  filter: drop-shadow(0 12px 24px rgba(130, 40, 65, 0.25));
+}
+
+/* ============================================== Candle */
+
+.velas {
+  background: #ffffff;
+  border-radius: 10px;
+  position: absolute;
+  top: 178px;
+  left: 50%;
+  margin-left: -2.5px;
+  width: 5px;
+  height: 35px;
+  transform: translateY(-300px);
+  backface-visibility: hidden;
+  animation: in 500ms 5.8s ease-out forwards;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  z-index: 10;
+}
+
+.velas:after,
+.velas:before {
+  background: rgba(255, 0, 70, 0.45);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.5px;
+}
+.velas:after {
+  top: 25%;
+  left: 0;
+}
+.velas:before {
+  top: 45%;
+  left: 0;
+}
+
+/* ============================================== Fire */
+
+.fuego {
+  border-radius: 100%;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  margin-left: -3.5px;
+  width: 7px;
+  height: 19px;
+  opacity: 0;
+}
+
+.fuego:nth-child(1) {
+  animation: fuego 2s 6.3s infinite;
+}
+.fuego:nth-child(2) {
+  animation: fuego 1.5s 6.3s infinite;
+}
+.fuego:nth-child(3) {
+  animation: fuego 1s 6.3s infinite;
+}
+.fuego:nth-child(4) {
+  animation: fuego 0.5s 6.3s infinite;
+}
+.fuego:nth-child(5) {
+  animation: fuego 0.2s 6.3s infinite;
+}
+
+@keyframes fuego {
+  0%, 100% {
+    opacity: 1;
+    background: rgba(255, 245, 120, 0.95);
+    box-shadow: 0 0 35px 12px rgba(255, 215, 100, 0.6);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    background: rgba(255, 90, 30, 0.6);
+    box-shadow: 0 0 40px 18px rgba(255, 180, 50, 0.4);
+    transform: translateY(-16px) scale(0.6);
+  }
+}
+
+@keyframes in {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ============================================== Text */
+
+.text {
+  position: relative;
+  margin-top: 15px;
+  text-align: center;
+  z-index: 20;
+  animation: fadeIn 1.2s 6.5s ease-out backwards;
+}
+
+.text h1 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: #fffaf0;
+  text-shadow: 0 2px 12px rgba(120, 30, 50, 0.35);
+}
+
+.text p {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  color: #ffe6ec;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-shadow: 0 1px 6px rgba(120, 30, 50, 0.25);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.cake-memories-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 12px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  background: linear-gradient(110deg, #d81e5b, #b71549);
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(183, 21, 73, 0.45);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  animation: fadeIn 1.2s 7.5s ease-out backwards;
+}
+
+.cake-memories-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(183, 21, 73, 0.65);
+}
+
+.cake-memories-btn:active {
+  transform: scale(0.97);
+}

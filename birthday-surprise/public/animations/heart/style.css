@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+svg {
+  position: absolute;
+  display: none;
+}
+

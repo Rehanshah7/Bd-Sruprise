@@ -1,0 +1,241 @@
+/* MEMORIES GALLERY */
+
+.memories-page {
+  min-height: 100svh;
+  padding: 45px 16px 35px;
+  color: #713c51;
+  background:
+    radial-gradient(ellipse at top left, #ffe0ec 0, transparent 45%),
+    linear-gradient(160deg, #fff9f5, #fff0f3 55%, #fff7ed);
+}
+
+.memories-header {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.memories-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #d15d88;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.memories-header h1 {
+  margin: 13px 0 10px;
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 10vw, 52px);
+  font-weight: 500;
+}
+
+.memories-header p {
+  max-width: 320px;
+  margin: 0 auto;
+  color: #9a7180;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 23px 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.memory-polaroid {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 8px 8px 13px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 3px;
+  background: #fffefa;
+  box-shadow: 0 5px 18px #8f53621c;
+  color: #775064;
+  text-align: left;
+  cursor: pointer;
+}
+
+.memory-tilt-0 { transform: rotate(-2deg); }
+.memory-tilt-1 { transform: rotate(2.5deg); }
+.memory-tilt-2 { transform: rotate(1.5deg); }
+.memory-tilt-3 { transform: rotate(-2.5deg); }
+.memory-tilt-4 { transform: rotate(1deg); }
+
+.memory-photo-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #f8dce5;
+}
+
+.memory-photo-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 350ms ease;
+}
+
+.memory-polaroid:active .memory-photo-wrap img {
+  transform: scale(1.04);
+}
+
+.memory-heart {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  display: grid;
+  width: 29px;
+  height: 29px;
+  place-items: center;
+  border-radius: 50%;
+  color: #d94d83;
+  background: #fffdf5e8;
+}
+
+.memory-caption {
+  display: block;
+  padding: 11px 3px 0;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.memories-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  max-width: 360px;
+  margin: 45px auto 0;
+  color: #d45c87;
+  text-align: center;
+}
+
+.memories-footer p {
+  margin: 0 0 8px;
+  color: #93697a;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.memories-next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 49px;
+  padding: 13px 21px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(110deg, #ed76a4, #d94d83);
+  box-shadow: 0 8px 22px #d94d8328;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.memory-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: #24131feF;
+}
+
+.memory-close {
+  position: absolute;
+  top: max(18px, env(safe-area-inset-top));
+  right: 18px;
+  display: grid;
+  width: 43px;
+  height: 43px;
+  place-items: center;
+  border: 1px solid #ffffff40;
+  border-radius: 50%;
+  color: white;
+  background: #ffffff18;
+}
+
+.memory-expanded {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  border-radius: 5px;
+  background: #fffdf9;
+  box-shadow: 0 20px 70px #0005;
+}
+
+.memory-expanded > img {
+  display: block;
+  width: 100%;
+  max-height: 58svh;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  background: #f8e7ec;
+}
+
+.memory-expanded > p {
+  margin: 15px 3px;
+  color: #79495f;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.memory-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #9a7180;
+  font-size: 12px;
+}
+
+.memory-navigation button {
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 20px;
+  color: #c44f7e;
+  background: #fce8ef;
+}
+
+.memory-navigation button:disabled {
+  opacity: 0.35;
+}
+
+@media (min-width: 600px) {
+  .memories-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px 20px;
+  }
+
+  .memories-page {
+    padding-top: 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-photo-wrap img {
+    transition: none;
+  }
+}
+
