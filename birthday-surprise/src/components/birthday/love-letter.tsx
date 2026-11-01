@@ -144,95 +144,96 @@ export function LoveLetter({ onBackToMemories, onBackToHome }: LoveLetterProps) 
                 {/* Envelope Back Shell */}
                 <div className="env-back" />
 
-                  {/* The Folded Letter Peeking Out From Inside */}
-                  <motion.div
-                    className="env-letter-sheet"
-                    animate={
-                      isOpening
-                        ? { y: -130, opacity: 1, scale: 1.05 }
-                        : { y: 0, opacity: 0.9 }
-                    }
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                  >
-                    <div className="sheet-border">
-                      <div className="sheet-watermark">
-                        <Heart size={20} fill="#f43f7a" className="text-pink-300" />
-                      </div>
-                      <p className="sheet-title">My Dearest Jaddduuu ♡</p>
-                      <div className="sheet-line" />
-                      <div className="sheet-line short" />
+                {/* Left Triangular Flap */}
+                <div className="env-flap-left" />
+
+                {/* Right Triangular Flap */}
+                <div className="env-flap-right" />
+
+                {/* Bottom Triangular Flap */}
+                <div className="env-flap-bottom" />
+
+                {/* Airmail Vintage Postage Stamp */}
+                <div className="env-postage-stamp">
+                  <div className="stamp-inner">
+                    <Heart size={14} fill="#e11d48" className="text-rose-500" />
+                    <span className="stamp-value">100%</span>
+                    <span className="stamp-text">LOVE</span>
+                  </div>
+                  <div className="stamp-postmark">
+                    <span>AIR MAIL</span>
+                    <div className="postmark-waves" />
+                  </div>
+                </div>
+
+                {/* Calligraphy Address Tag */}
+                <div className="env-calligraphy-address">
+                  <p className="addr-tag">PRIORITY DELIVERY FOR</p>
+                  <h3 className="addr-name">My Beautiful Jaddduuu</h3>
+                  <p className="addr-from">From: Your Rehan ♡</p>
+                </div>
+
+                {/* Top Triangular Flap (Folds down to dead center, swings open in 3D) */}
+                <motion.div
+                  className="env-flap-top"
+                  animate={
+                    isOpening
+                      ? { rotateX: 180, zIndex: 1 }
+                      : { rotateX: 0, zIndex: 12 }
+                  }
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                />
+
+                {/* The Folded Letter That Pops Out From the Center ONLY After Clicking */}
+                <motion.div
+                  className="env-letter-sheet"
+                  initial={{ y: 0, opacity: 0, scale: 0.7 }}
+                  animate={
+                    isOpening
+                      ? { y: -125, opacity: 1, scale: 1.05 }
+                      : { y: 0, opacity: 0, scale: 0.7 }
+                  }
+                  transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="sheet-border">
+                    <div className="sheet-watermark">
+                      <Heart size={20} fill="#f43f7a" className="text-pink-300" />
                     </div>
-                  </motion.div>
+                    <p className="sheet-title">My Dearest Jaddduuu ♡</p>
+                    <div className="sheet-line" />
+                    <div className="sheet-line short" />
+                  </div>
+                </motion.div>
 
-                  {/* Left Triangular Flap */}
-                  <div className="env-flap-left" />
-
-                  {/* Right Triangular Flap */}
-                  <div className="env-flap-right" />
-
-                  {/* Bottom Triangular Flap */}
-                  <div className="env-flap-bottom" />
-
-                  {/* Airmail Vintage Postage Stamp */}
-                  <div className="env-postage-stamp">
-                    <div className="stamp-inner">
-                      <Heart size={14} fill="#e11d48" className="text-rose-500" />
-                      <span className="stamp-value">100%</span>
-                      <span className="stamp-text">LOVE</span>
-                    </div>
-                    <div className="stamp-postmark">
-                      <span>AIR MAIL</span>
-                      <div className="postmark-waves" />
+                {/* Crimson Wax Seal Stamp (Centered at Dead Center) */}
+                <motion.button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpenEnvelope();
+                  }}
+                  animate={
+                    isOpening
+                      ? { scale: [1, 1.25, 0], opacity: 0 }
+                      : { scale: [1, 1.04, 1] }
+                  }
+                  transition={
+                    isOpening
+                      ? { duration: 0.45 }
+                      : { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
+                  }
+                  whileHover={{ scale: 1.15 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="real-wax-seal"
+                  aria-label="Break wax seal and open letter"
+                >
+                  <div className="wax-rim">
+                    <div className="wax-emboss">
+                      <Heart size={20} fill="currentColor" />
                     </div>
                   </div>
-
-                  {/* Calligraphy Address Tag */}
-                  <div className="env-calligraphy-address">
-                    <p className="addr-tag">PRIORITY DELIVERY FOR</p>
-                    <h3 className="addr-name">My Beautiful Jaddduuu</h3>
-                    <p className="addr-from">From: Your Rehan ♡</p>
-                  </div>
-
-                  {/* Top Triangular Flap (Folds down, swings open in 3D) */}
-                  <motion.div
-                    className="env-flap-top"
-                    animate={
-                      isOpening
-                        ? { rotateX: 180, zIndex: 1 }
-                        : { rotateX: 0, zIndex: 12 }
-                    }
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
-                  />
-
-                  {/* Crimson Wax Seal Stamp */}
-                  <motion.button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleOpenEnvelope();
-                    }}
-                    animate={
-                      isOpening
-                        ? { scale: [1, 1.3, 0], opacity: 0 }
-                        : { scale: [1, 1.04, 1] }
-                    }
-                    transition={
-                      isOpening
-                        ? { duration: 0.4 }
-                        : { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
-                    }
-                    whileHover={{ scale: 1.15 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="real-wax-seal"
-                    aria-label="Break wax seal and open letter"
-                  >
-                      <div className="wax-rim">
-                        <div className="wax-emboss">
-                          <Heart size={20} fill="currentColor" />
-                        </div>
-                      </div>
-                      <span className="seal-sparkle">✦</span>
-                  </motion.button>
+                  <span className="seal-sparkle">✦</span>
+                </motion.button>
               </motion.div>
 
               {/* Click Button */}

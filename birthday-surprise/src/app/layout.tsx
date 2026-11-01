@@ -6,7 +6,7 @@ import "./memories.css";
 import "./love-letter.css";
 
 export const metadata: Metadata = {
-  title: "A Little Surprise for You ❤️",
+  title: "Happy Birthday Jaddduuu ❤️",
   description: "A special birthday surprise made with love.",
   applicationName: "Birthday Surprise",
 };

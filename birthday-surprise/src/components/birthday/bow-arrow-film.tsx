@@ -13,6 +13,19 @@ export function BowArrowFilm({ onNext, onBackToHome }: BowArrowFilmProps) {
   const [isAnimationDone, setIsAnimationDone] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
+  // Lock body scroll completely while Bow and Arrow film is active
+  useEffect(() => {
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+    };
+  }, []);
+
   useEffect(() => {
     // 1. Listen for message from the iframe when the animation completes
     function handleMessage(event: MessageEvent) {
@@ -54,7 +67,7 @@ export function BowArrowFilm({ onNext, onBackToHome }: BowArrowFilmProps) {
   return (
     <section
       id="bow-arrow-section"
-      className="relative w-full h-[100svh] min-h-[560px] overflow-hidden bg-[#12060c] text-white select-none"
+      className="fixed inset-0 w-full h-[100dvh] overflow-hidden bg-[#12060c] text-white select-none z-50 touch-none overscroll-none"
       aria-label="Cupid Bow and Arrow Animation"
     >
       {/* Top Floating Header */}

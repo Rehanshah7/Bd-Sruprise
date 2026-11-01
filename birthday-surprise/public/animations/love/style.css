@@ -4,9 +4,12 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
   background: #000;
@@ -20,7 +23,9 @@ body {
   position: relative;
   width: 450px;
   height: 450px;
-  transform: scale(min(1, 80vw / 450px));
+  transform-origin: center center;
+  /* Centered and scaled to fit screen comfortably on both mobile and desktop */
+  transform: scale(min(0.85, 78vw / 450px, 60vh / 450px));
 }
 
 #ui .love {
@@ -33,11 +38,13 @@ body {
 
 #ui .love_word {
   color: #ea80b0;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   letter-spacing: 2px;
   white-space: nowrap;
-  text-shadow: 0 0 10px #fff, 0 0 20px #ff6699;
-  transform: translateY(-100%) rotate(-30deg);
+  text-shadow: 0 0 10px #fff, 0 0 20px #ff6699, 0 0 30px #e11d48;
+  /* Crucial: anchored at exact center so heart is centered horizontally & vertically */
+  transform-origin: center center;
+  transform: translate(-50%, -50%) rotate(-30deg);
 }
 
 #ui .love_horizontal {
@@ -145,4 +152,3 @@ body {
     transform: translateY(180px);
   }
 }
-

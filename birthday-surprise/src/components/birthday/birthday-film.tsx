@@ -62,7 +62,20 @@ interface BirthdayFilmProps {
 
     const currentAnim = ANIMATIONS[currentIndex];
 
-    // Auto-advance sequence
+    // Lock body scroll while animations sequence is visible
+  useEffect(() => {
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+    };
+  }, []);
+
+  // Auto-advance sequence
     useEffect(() => {
       if (!isAutoPlay) return;
       if (showCakePrompt) return;
@@ -146,7 +159,7 @@ interface BirthdayFilmProps {
     return (
       <section
         id="birthday-reveal"
-        className="relative w-full h-[100svh] min-h-[560px] overflow-hidden bg-black text-white flex flex-col items-center justify-center select-none"
+        className="fixed inset-0 w-full h-[100dvh] overflow-hidden bg-black text-white flex flex-col items-center justify-center select-none z-40 touch-none overscroll-none"
         aria-label="Birthday Animations Sequence"
       >
         {/* Top Floating Header & Nav Pills */}

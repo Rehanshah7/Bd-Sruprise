@@ -2,15 +2,16 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Delete, Heart, LockKeyhole, Sparkles } from "lucide-react";
+import { ArrowLeft, Delete, Heart, LockKeyhole, Sparkles } from "lucide-react";
 
 const CORRECT_PIN = "0211";
 
 export interface SecretPinProps {
   onStartFilm?: () => void;
+  onBackToCover?: () => void;
 }
 
-export function SecretPin({ onStartFilm }: SecretPinProps = {}) {
+export function SecretPin({ onStartFilm, onBackToCover }: SecretPinProps = {}) {
   const [pin, setPin] = useState("");
   const [error, setError] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
@@ -47,6 +48,18 @@ export function SecretPin({ onStartFilm }: SecretPinProps = {}) {
     <section id="secret-pin" className="secret-pin-section">
       <div className="pin-decoration pin-decoration-one">♡</div>
       <div className="pin-decoration pin-decoration-two">✦</div>
+
+      {onBackToCover && (
+        <button
+          type="button"
+          onClick={onBackToCover}
+          className="absolute top-6 left-6 z-20 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/80 hover:bg-white text-rose-700 text-xs font-semibold shadow-sm border border-rose-200 backdrop-blur-md transition-all active:scale-95"
+          title="Back to cover"
+        >
+          <ArrowLeft size={14} />
+          <span>Back</span>
+        </button>
+      )}
 
       <motion.div
         className="pin-card"

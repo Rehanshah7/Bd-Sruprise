@@ -8,19 +8,23 @@ import { BirthdayFilm } from "@/components/birthday/birthday-film";
 import { MemoriesGallery } from "@/components/birthday/memories-gallery";
 import { LoveLetter } from "@/components/birthday/love-letter";
 
-type Stage = "cover" | "bow-arrow" | "animations" | "memories" | "letter";
+type Stage = "cover" | "pin" | "bow-arrow" | "animations" | "memories" | "letter";
 
-  export default function Home() {
-    const [stage, setStage] = useState<Stage>("cover");
+export default function Home() {
+  const [stage, setStage] = useState<Stage>("cover");
 
-        return (
-        <main>
-          {stage === "cover" && (
-            <>
-              <BirthdayCover />
-              <SecretPin onStartFilm={() => setStage("bow-arrow")} />
-            </>
-          )}
+  return (
+    <main>
+      {stage === "cover" && (
+        <BirthdayCover onOpenSurprise={() => setStage("pin")} />
+      )}
+
+      {stage === "pin" && (
+        <SecretPin
+          onStartFilm={() => setStage("bow-arrow")}
+          onBackToCover={() => setStage("cover")}
+        />
+      )}
 
           {stage === "bow-arrow" && (
             <BowArrowFilm

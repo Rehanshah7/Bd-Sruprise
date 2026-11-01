@@ -17,7 +17,11 @@ const balloons = [
   { left: "77%", delay: 0.6, color: "#ffb9cb" },
 ];
 
-export function BirthdayCover() {
+interface BirthdayCoverProps {
+  onOpenSurprise?: () => void;
+}
+
+export function BirthdayCover({ onOpenSurprise }: BirthdayCoverProps = {}) {
   return (
     <main className="birthday-cover">
       <div className="cover-glow cover-glow-one" />
@@ -176,8 +180,9 @@ export function BirthdayCover() {
           🎀
         </motion.div>
 
-        <motion.a
-          href="#secret-pin"
+        <motion.button
+          type="button"
+          onClick={onOpenSurprise}
           className="cover-button"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.96 }}
@@ -187,16 +192,7 @@ export function BirthdayCover() {
         >
           Open your surprise
           <Heart size={17} fill="currentColor" />
-        </motion.a>
-
-        <motion.div
-          className="scroll-hint"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <ArrowDown size={15} />
-          <span>there's more waiting for you</span>
-        </motion.div>
+        </motion.button>
       </div>
 
       <div className="cover-footer">
