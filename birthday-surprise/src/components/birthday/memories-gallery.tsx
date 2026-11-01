@@ -14,6 +14,7 @@ const memories: Memory[] = [
   { image: "/images/20260626_195124.jpg.jpeg", caption: "One of my favorite moments ❤️" },
   { image: "/images/20261027_193434.jpg.jpeg", caption: "That beautiful smile of yours 💗" },
   { image: "/images/20261028_195052.jpg.jpeg", caption: "Us, just being us 🥹" },
+  { image: "/images/IMG_20261101_164510_126(1).jpg.jpeg", caption: "My favvv Jaduuu" },
   { image: "/images/23562-Picsart-AiImageEnhancer.png", caption: "A memory I want to keep forever ✨" },
   { image: "/images/23629-Picsart-AiImageEnhancer.png", caption: "My favorite person, always 💕" },
   { image: "/images/23630-Picsart-AiImageEnhancer.png", caption: "Every moment with you matters ❤️" },
